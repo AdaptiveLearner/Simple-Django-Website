@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}<title>資料表查詢列印</title>{% endblock %}
+{% block content %}
+
+<form action="." method="POST" name="form1">
+    {% csrf_token %}
+    <table border="1" cellspacing="1" cellpadding="4">
+        <tr>
+            <th>員工身分證字號</th>
+            <td> {{unit.emp_id}} </td>
+        </tr>
+
+        <tr>
+            <th>眷屬身分證字號</th>
+            <td> {{unit.dep_id}} </td>
+        </tr>
+
+        <tr>
+            <th>關係</th>
+            <td> {{unit.relation}} </td>
+        </tr>
+
+        <tr>
+            <th>狀態</th>
+            <td> {{unit.status}} </td>
+        </tr>
+    </table>
+</form>
+<input type="button" value="列印" onClick="window.print()">
+{% endblock %}

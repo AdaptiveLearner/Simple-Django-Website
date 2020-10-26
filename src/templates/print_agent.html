@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}<title>employee資料表查詢列印</title>{% endblock %}
+{% block content %}
+
+<form action="." method="POST" name="form1">
+    {% csrf_token %}
+    <table border="1" cellspacing="1" cellpadding="4">
+        <tr>
+            <th>id</th>
+            <td> {{unit.id}} </td>
+        </tr>
+
+        <tr>
+            <th>員工身分證字號</th>
+            <td> {{unit.emp_id}} </td>
+        </tr>
+
+        <tr>
+            <th>派駐國家代碼</th>
+            <td> {{unit.country_code}} </td>
+        </tr>
+
+        <tr>
+            <th>員工姓名</th>
+            <td> {{unit.emp_name}} </td>
+        </tr>
+
+
+        <tr>
+            <th>到職日期</th>
+            <td> {{unit.arrival_date}} </td>
+        </tr>
+
+        <tr>
+            <th>大使姓名</th>
+            <td> {{unit.ambassador_name}} </td>
+        </tr>
+
+        <tr>
+            <th>狀態</th>
+            <td> {{unit.status}} </td>
+        </tr>
+    </table>
+</form>
+<input type="button" value="列印" onClick="window.print()">
+{% endblock %}

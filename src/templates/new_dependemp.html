@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}<title>員工眷屬複合資料表 新增</title>{% endblock %}
+{% block content %}
+
+<script>
+	function selectEmployee() {
+		var choice = {{ elist | safe }};
+		var selectHTML = "<select id='emp_id' name='emp_id'>";
+		for (var i = 0; i < choice.length; i++) {
+			selectHTML += "<option value='" + choice[i] + "'>" + choice[i] + "</option>";
+		}
+		selectHTML += "</select>";
+		document.write(selectHTML);
+	}
+
+	function selectDependent() {
+		var choice = {{ dlist | safe }};
+		var selectHTML = "<select  id='dep_id' name='dep_id'>";
+		for (var i = 0; i < choice.length; i++) {
+			selectHTML += "<option value='" + choice[i] + "'>" + choice[i] + "</option>";
+		}
+		selectHTML += "</select>";
+		document.write(selectHTML);
+	}	
+</script>
+
+<h2>員工眷屬複合資料表 新增</h2>
+<form action="." method="POST" name="form1">
+	{% csrf_token %}
+	<table border="1" cellspacing="1" cellpadding="4">
+		<tr>
+			<th bgcolor="#00FF00">員工身分證字號</th>
+			<td>
+				<script>
+					selectEmployee();
+				</script>
+			</td>
+		</tr>
+		<tr>
+			<th bgcolor="#00FF00">眷屬身分證字號</th>
+			<td>
+				<script>
+					selectDependent();
+				</script>
+			</td>
+		</tr>
+		<tr>
+			<th>關係</th>
+			<td>{{postform_dependemp.relation}}</td>
+		</tr>
+		<tr>
+			<th>狀態</th>
+			<td>{{postform_dependemp.status}}</td>
+		</tr>
+		<tr>
+			<th align="center">
+			<td>
+				<input type="submit" name="button" id="button" value="送出">
+			</td>
+			</th>
+		</tr>
+	</table>
+	<span style="color:red">{{message}}</span>
+</form>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}<title>國家資料表新增</title>{% endblock %}
+{% block content %}
+<h2>country 國家資料表新增</h2>
+<form action="." method="POST" name="form1">
+	{% csrf_token %}
+	<table border="1" cellspacing="1" cellpadding="4">
+		<tr>
+			<th bgcolor="#00FF00">國家代碼</th>
+			<td>	
+				<select name="country_code">
+					<option value="000006"> 000006 </option>
+					<option value="000007"> 000007 </option>
+					<option value="000008"> 000008 </option>
+					<option value="000009"> 000009 </option>
+					<option value="000010"> 000010 </option>
+					<option value="000011"> 000011 </option>
+					<option value="000012"> 000012 </option>
+					<option value="000013"> 000013 </option>
+					<option value="000014"> 000014 </option>
+					<option value="000015"> 000015 </option>
+				</select>
+			</td>				
+		</tr>
+		<tr>
+			<th bgcolor="#00FF00">國家名稱</th>
+			<td>{{postform_country.country_name}}</td>
+		</tr>
+		<tr>
+			<th  bgcolor="#00FF00">所屬洲名</th>
+			<td>
+				<input name="continent_attr" type="radio" id="Asia" value="Asia" checked="checked"/>Asia
+				<input name="continent_attr" type="radio" id="NAmerica" value="NorthAmerica" />North America
+				<input name="continent_attr" type="radio" id="SAmerica" value="SouthAmerica" />South America
+				<input name="continent_attr" type="radio" id="Europe" value="Europe" />Europe
+				<input name="continent_attr" type="radio" id="Africa" value="Africa" />Africa
+			</td>			
+		</tr>
+		<tr>
+			<th>元首姓名</th>
+			<td>{{postform_country.head_of_state}}</td>
+		</tr>
+		<tr>
+			<th>外交部長姓名</th>
+			<td>{{postform_country.foreign_minister}}</td>
+		</tr>
+        <tr>
+			<th>聯絡人</th>
+			<td>{{postform_country.liaison}}</td>
+		</tr>
+		<tr>
+			<th bgcolor="#00FF00">人口</th>
+			<td>
+				<input type="number" name="country_population" min="100000" max="1500000000" step="100000" value="9000000">
+			</td>			
+		</tr>
+		<tr>
+			<th bgcolor="#00FF00">面積</th>
+			<td>
+				<input type="number" name="country_area" min="10000" max="10000000" step="10000" value="40000">
+			</td>				
+		</tr>
+		<tr>
+			<th>電話</th>
+			<td>{{postform_country.contact_number}}</td>
+		</tr>
+		<tr>
+			<th>是否邦交國</th>
+			<td>
+				<input name="has_diplomatic_relatioin" type="radio" id="Y" value="Yes" checked="checked">
+				Yes
+				<input name="has_diplomatic_relatioin" type="radio" id="N" value="No" />
+				No
+			</td>			
+		</tr>
+		<tr>
+			<th bgcolor="#00FF00">大使姓名</th>
+			<td>
+				<input type="text" id="ambassador_name" name="ambassador_name">
+			</td>
+		</tr>			
+		<tr>
+			<th>存在狀態</th>
+			<td>
+				<input name="status" type="radio" id="normal" value="正常" checked="checked" />
+				正常
+				<input name="status" type="radio" id="extinct" value="亡國" />
+				亡國
+			</td>
+		</tr>
+	</table>
+	<span style="color:red">{{message}}</span> <br><br>
+	<input type="submit" name="button" id="button" style="font-size: 18pt" value="送出">	
+</form>
+{% endblock %}

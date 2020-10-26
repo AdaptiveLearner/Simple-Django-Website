@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}<title>employee資料表修改</title>{% endblock %}
+{% block content %}
+
+<script>
+	function selectPhoto() {
+
+		var img = {{ imgs | safe }};
+		var current = {{ unit.photo  }};
+		var selectHTML = "";
+		selectHTML += "test3";
+
+		document.write(selectHTML);
+	}
+</script>
+
+<h2>employee 資料表修改</h2>
+<form action="/edit_employee/{{unit.emp_id}}/save" method="POST" name="form1">
+	{% csrf_token %}
+	<table border="1" cellspacing="1" cellpadding="4">
+		<tr>
+			<th>員工姓名</th>
+			<td><input type="text" id="emp_name" name="emp_name" value={{unit.emp_name}}></td>
+		</tr>
+
+		<tr>
+			<th>身分證字號</th>
+			<td><input type="text" id="emp_id" name="emp_id" value={{unit.emp_id}}></td>
+		</tr>
+
+		<tr>
+			<th>職等</th>
+			<td>
+				<input type="number" name="rank" min="1" max="14" step="1" value="6">	
+			</td>			
+		</tr>
+
+		<tr>
+			<th>薪資</th>
+			<td>
+				<input type="number" name="salary" min="22000" max="200000" step="1000" value="35000">
+			</td>
+		</tr>
+
+		<tr>
+			<th>電話</th>
+			<td><input type="text" id="phone_number" name="phone_number" value={{unit.phone_number}}></td>
+		</tr>
+
+		<tr>
+			<th>性別</th>
+				<td>
+				{% if unit.sex == "M" %}
+					<input name="sex" type="radio" id="M" value="M" checked="checked" />M
+					<input name="sex" type="radio" id="F" value="F" />F
+				{% else %}
+					<input name="sex" type="radio" id="M" value="M" />M
+					<input name="sex" type="radio" id="F" value="F" checked="checked" />F
+				{% endif %}
+			</td>
+		</tr>
+
+		<tr>
+			<th>出生年月日</th>
+			<td><input type="text" id="birthdate" name="birthdate" value={{unit.birthdate}}></td>
+		</tr>
+
+		<tr>
+			<th>錄用日期</th>
+			<td><input type="text" id="recruit_date" name="recruit_date" value={{unit.recruit_date}}></td>
+		</tr>
+
+		<tr>
+			<th>住址</th>
+			<td><input type="text" id="address" name="address" value={{unit.address}}></td>
+		</tr>
+
+		<tr>
+			<th>照片</th>
+			<td>
+			{% for img in imgs %}
+				{% if unit.photo == img %}
+					<input name="photo" type="radio" value={{img}} checked="checked" /> {{img}}
+				{% else %}
+					<input name="photo" type="radio" value={{img}} />  {{img}}	
+				{% endif %}
+			{% endfor %}
+			</td>
+		</tr>
+
+
+		<tr>
+			<th>狀態</th>
+			<td>
+				{% if unit.status == "正常" %}
+					<input name="status" type="radio" id="正常" value="正常" checked="checked" />正常
+					<input name="status" type="radio" id="刪除" value="刪除" />刪除
+				{% else %}
+					<input name="status" type="radio" id="正常" value="正常" />正常
+					<input name="status" type="radio" id="刪除" value="刪除" checked="checked" />刪除
+				{% endif %}
+			</td>
+
+		</tr>
+
+		<tr>
+			<th colspan="2" align="center">
+				<input type="submit" name="button" id="button" value="送出">
+		</tr>
+	</table>
+	<span style="color:red">{{message}}</span> </form>
+</form>
+{% endblock %}

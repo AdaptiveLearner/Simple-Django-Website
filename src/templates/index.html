@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+{% block title %}
+{% load static %}
+<style>
+	img.center {
+		display: block;
+		margin: 0 auto;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h1> Database Implementation: A Mini Database/Website for Foreign Affairs(題目二) </h1>
+
+<h1>
+主畫面 系統介面 <br>
+</h1>
+
+<form action="/userInterface/">
+    <input style="font-size: 20pt; background-color: yellowgreen;" type="submit" value="前往使用者介面" />
+</form>
+
+
+<h2 align="left">employee員工基本資料表&nbsp;&nbsp;
+	<a href="/new_employee/">新增</a>
+</h2>
+
+
+<form action="." method="POST" name="form1">
+	{% csrf_token %}
+	<table border="1" cellpadding="0" cellspacing="0">
+		<th>身分證字號</th>
+		<th>員工姓名</th>
+		<th>職等</th>
+		<th>薪資</th>
+		<th>電話</th>
+		<th>性別</th>
+		<th>出生年月日</th>
+		<th>錄用日期</th>
+		<th>住址</th>
+		<th>照片</th>
+		<th>狀態</th>
+
+		{% for e in employees %}
+		<tr>
+			<td style="text-align:center">{{ e.emp_id}} </td>
+			<td style="text-align:center">{{ e.emp_name}} </td>
+			<td style="text-align:center">{{ e.rank}} </td>
+			<td style="text-align:right">{{ e.salary}} </tdstyle="text-align:center">
+			<td style="text-align:center">{{ e.phone_number}} </td>
+			<td style="text-align:center">{{ e.sex}} </td>
+			<td style="text-align:center">{{ e.birthdate}} </td>
+			<td style="text-align:center">{{ e.recruit_date}} </td>
+			<td style="text-align:center">{{ e.address}} </td>
+			<td>
+				<img class="center" src="/media/{{ e.photo }}.png">
+			</td>
+			<td style="text-align:center">{{ e.status}} </td>
+
+			<td>
+				<a href="/print_employee/{{e.emp_id}}/" title="查詢列印 刪除">查詢 列印 刪除</a> <br>
+				<a href="/edit_employee/{{e.emp_id}}/load" title="編輯">編輯</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+
+
+<h2 align="left">country國家資料表&nbsp;&nbsp;
+	<a href="/new_country/">新增</a></h2>
+<form action="." method="POST" name="form2">
+	{% csrf_token %}
+	<table border="1" cellpadding="0" cellspacing="0">
+		<th>國家代碼</th>
+		<th>國家名稱</th>
+		<th>所屬洲名</th>
+		<th>元首姓名</th>
+		<th>外交部長姓名</th>
+		<th>聯絡人</th>
+		<th>人口</th>
+		<th>面積</th>
+		<th>電話</th>
+		<th>是否邦交國</th>
+		<th>大使姓名</th>
+		<th>存在狀態</th>
+
+		{% for c in countries %}
+		<tr>
+			<td style="text-align:center">{{ c.country_code }} </td>
+			<td style="text-align:center">{{ c.country_name }} </td>
+			<td style="text-align:center">{{ c.continent_attr }} </td>
+			<td style="text-align:center">{{ c.head_of_state }} </td>
+			<td style="text-align:center">{{ c.foreign_minister }} </td>
+			<td style="text-align:center">{{ c.liaison }} </td>
+			<td style="text-align:right">{{ c.country_population }} </tdstyle="text-align:right">
+			<td style="text-align:right">{{ c.country_area }} </td>
+			<td style="text-align:center"> {{ c.contact_number }} </td>
+			<td style="text-align:center">{{ c.has_diplomatic_relatioin }} </td>
+			<td style="text-align:center">{{ c.ambassador_name }} </td>
+			<td style="text-align:center">{{ c.status }} </td>
+
+			<td>
+				<a href="/print_country/{{c.country_code}}/" title="查詢 列印 刪除">查詢 列印 刪除</a>
+				<a href="/edit_country/{{c.country_code}}/load" title="編輯">編輯</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+
+
+<h2 align="left">dependent眷屬資料表&nbsp;&nbsp;
+	<a href="/new_dependent/">新增</a></h2>
+<form action="." method="POST" name="form4">
+	{% csrf_token %}
+	<table border="1" cellpadding="0" cellspacing="0">
+		<th>眷屬身分證字號</th>
+		<th>眷屬姓名</th>
+		<th>眷屬性別</th>
+		<th>出生年月日</th>
+
+		{% for d in dependents %}
+		<tr>
+			<td style="text-align:center">{{ d.dep_id }} </td>
+			<td style="text-align:center">{{ d.dep_name }} </td>
+			<td style="text-align:center">{{ d.dep_sex }} </td>
+			<td style="text-align:center">{{ d.birthdate }} </td>
+
+			<td>
+				<a href="/print_dependent/{{d.dep_id}}/" title="查詢列印">查詢列印</a>
+				<a href="/edit_dependent/{{d.dep_id}}/load" title="編輯">編輯</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+
+
+<h2 align="left">agent派駐資料表&nbsp;&nbsp;
+	<a href="/new_agent/">新增</a></h2>
+<form action="." method="POST" name="form4">
+	{% csrf_token %}
+	<table border="1" cellpadding="0" cellspacing="0">
+		<th>id</th>
+		<th>員工身分證字號</th>
+		<th>派駐國家代碼</th>
+		<th>到職日期</th>
+		<th>狀態</th>
+
+		{% for a in agents %}
+		<tr>
+			<td style="text-align:center">{{ a.id }} </td>
+			<td style="text-align:center">{{ a.emp_id }} </td>
+			<td style="text-align:center">{{ a.country_code }} </td>
+			<td style="text-align:center">{{ a.arrival_date }} </td>
+			<td style="text-align:center">{{ a.status }} </td>
+
+			<td>
+				<a href="/print_agent/{{a.id}}/" title="查詢列印">查詢列印</a>
+				<a href="/edit_agent/{{a.id}}/load" title="編輯">編輯</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+
+
+<h2 align="left">dependemp員工眷屬複合資料表&nbsp;&nbsp;
+	<a href="/new_dependemp/">新增</a></h2>
+<form action="." method="POST" name="form4">
+	{% csrf_token %}
+	<table border="1" cellpadding="0" cellspacing="0">
+		<th>id</th>
+		<th>員工身分證字號</th>
+		<th>眷屬身分證字號</th>
+		<th>關係</th>
+		<th>狀態</th>
+
+		{% for d in dependemps %}
+		<tr>
+			<td style="text-align:center">{{ d.id }} </td>
+			<td style="text-align:center">{{ d.emp_id }} </td>
+			<td style="text-align:center">{{ d.dep_id }} </td>
+			<td style="text-align:center">{{ d.relation }} </td>
+			<td style="text-align:center">{{ d.status }} </td>
+
+			<td>
+				<a href="/print_dependemp/{{d.id}}/" title="查詢列印">查詢列印</a>
+				<a href="/edit_dependemp/{{d.id}}/load" title="編輯">編輯</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+
+<h1> ER Diagram </h1>
+
+
+<img src="{% static "images/ERdiagram.png" %}">
+
+
+<ol>
+	<li style="color:green;font-size:24px">
+		employee
+		員工資料表</li>
+	<li style="color:green;font-size:24px">
+		country
+		國家資料表</li>
+	<li style="color:green;font-size:24px">
+		stationed_agent
+		派駐員工資料表</li>
+	<li style="color:green;font-size:24px">
+		dependent
+		眷屬資料表
+	</li>
+</ol>
+
+
+<h1> Python/SQLite code </h1>
+
+<p>
+
+	<textarea cols="100" rows="20" font-size: 44px color:blue>
+	</textarea>
+
+
+</p>
+
+
+{% endblock %}\
+
+</html>

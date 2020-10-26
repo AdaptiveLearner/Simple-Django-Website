@@ -1,0 +1,120 @@
+[{
+    "model": "f1app.employee",
+    "fields": {
+      "emp_name": "王小明",
+      "emp_id": "A123456788",
+	  "rank": "8",
+	  "salary": "80000",
+	  "phone_number": "88621111111111",
+	  "sex": "M",
+	  "birthdate": "1975/12/15",
+	  "recruit_date": "1995/10/02",
+	  "address": "Berry road 1",
+	  "photo": "",
+	  "status": "正常"
+    }
+  },
+  {
+    "model": "f1app.employee",
+    "fields": {
+      "emp_name": "陳小玲",
+      "emp_id": "A123456789",
+	  "rank": "8",
+	  "salary": "90000",
+	  "phone_number": "88621111111112",
+	  "sex": "F",
+	  "birthdate": "1975/08/01",
+	  "recruit_date": "1995/10/02",
+	  "address": "Berry road 1",
+	  "photo": "",
+	  "status": "正常"
+    }
+  },
+  {
+    "model": "f1app.employee",
+    "fields": {
+      "emp_name": "劉小宏",
+      "emp_id": "A123456787",
+	  "rank": "10",
+	  "salary": "100000",
+	  "phone_number": "88621111111113",
+	  "sex": "M",
+	  "birthdate": "1960/12/08",
+	  "recruit_date": "1988/10/12",
+	  "address": "Berry road 2",
+	  "photo": "",
+	  "status": "正常"
+    }
+  },  
+  {
+    "model": "f1app.employee",
+    "fields": {
+      "emp_name": "林小妍",
+      "emp_id": "B12345678",
+	  "rank": "11",
+	  "salary": "110000",
+	  "phone_number": "88611000111222",
+	  "sex": "F",
+	  "birthdate": "1970/03/01",
+	  "recruit_date": "1995/10/09",
+	  "address": "Maple road 1",
+	  "photo": "",
+	  "status": "正常"
+    }
+  },
+  {
+    "model": "f1app.employee",
+    "fields": {
+      "emp_name": "李四",
+      "emp_id": "B12345678",
+	  "rank": "11",
+	  "salary": "110000",
+	  "phone_number": "88612000111222",
+	  "sex": "M",
+	  "birthdate": "1960/12/20",
+	  "recruit_date": "1988/10/02",
+	  "address": "Maple road 1",
+	  "photo": "",
+	  "status": "正常"
+    }
+  },
+  {
+    "model": "f1app.country",
+    "fields": {
+      "country_code": "001",
+      "country_name": "美國",
+	  "continent_attr": "11",
+	  "head_of_state": "Albert",
+	  "foreign_minister": "John",
+	  "liaison": "q",
+	  "country_population": "123456",
+	  "country_area": "123",
+	  "contact_number": "0021818",
+	  "has_diplomatic_relatioin": "Yes",
+	  "alive": "正常"
+    }
+  },
+  {
+    "model": "f1app.agent",
+    "fields": {
+      "emp_id": "A125",
+      "country_code": "D222",
+	  "emp_name": "James",
+	  "arrival_date": "2010/05/21",
+	  "ambassador_name": "Brooks",
+	  "status": "正常"
+    }
+  },
+  {
+    "model": "f1app.dependent",
+    "fields": {
+      "emp_id": "A123",
+      "dep_id": "D222",
+	  "dep_name": "Lisa",
+	  "dep_sex": "M",
+	  "relation": "husband",
+	  "birthdate": "12/34/56",
+	  "status": "正常"
+    }
+  }    
+]

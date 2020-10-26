@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}<title>資料表刪除</title>{% endblock %}
+{% block content %}
+	<h1">agent 資料表刪除</h1>
+	<form action="." method="POST" name="form1">
+		{% csrf_token %}
+		<div>請輸入代碼：<input type="text" name="country_code" />
+		</div>
+		<div>
+		<input type="submit" name="button" id="button" value="確定刪除" />
+		</div> 
+		<span style="color:red">{{message}}</span>
+	</form>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}<title>派駐資料表修改</title>{% endblock %}
+{% block content %}
+<h2>派駐資料表修改</h2>
+<form action="/edit_agent/{{id}}/save" method="POST" name="form1">
+	{% csrf_token %}
+	<table border="1" cellspacing="1" cellpadding="4">
+		<tr>
+			<th>員工身分證字號</th>
+			<td>
+				<select id='emp_id' name='emp_id'>
+					{% for e in elist %}
+						{% if e == unit.emp_id %}
+							<option value={{e}} selected> {{e}} </option>
+						{% else %}
+							<option value={{e}}> {{e}} </option>
+						{% endif %}
+					{% endfor %}
+				</select>	
+			</td>
+		</tr>
+
+		<tr>
+			<th>派駐國家代碼</th>
+			<td>
+				<select id='country_code' name='country_code'>
+					{% for c in clist %}
+						{% if c == unit.country_code %}
+							<option value={{c}} selected> {{c}} </option>
+						{% else %}
+							<option value={{c}}> {{c}} </option>
+						{% endif %}
+					{% endfor %}
+				</select>	
+			</td>
+		</tr>
+
+		<tr>
+			<th>到職日期</th>
+			<td><input type="text" id="arrival_date" name="arrival_date" value={{unit.arrival_date}}></td>
+		</tr>
+
+		<tr>
+			<th>狀態</th>
+			<td>
+				{% if unit.status == "正常" %}
+					<input name="status" type="radio" id="正常" value="正常" checked="checked" />正常
+					<input name="status" type="radio" id="刪除" value="離職" />離職
+				{% else %}
+					<input name="status" type="radio" id="正常" value="正常" />正常
+					<input name="status" type="radio" id="刪除" value="離職" checked="checked" />離職
+				{% endif %}
+			</td>
+		</tr>
+
+		<tr>
+			<th colspan="2" align="center">
+				<input type="submit" name="button" id="button" value="送出">
+		</tr>
+	</table>
+	<span style="color:red">{{message}}</span> </form>
+</form>
+{% endblock %}

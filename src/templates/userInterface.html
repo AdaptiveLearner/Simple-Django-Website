@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% block title %}<title>派駐資料表新增</title>   
+{% endblock %}
+
+{% block content %}
+
+<h1>使用者介面</h1>
+
+<form action="/index/">
+    <input style="font-size: 20pt; background-color: yellowgreen;" type="submit" value="返回主畫面 系統介面" />
+</form>
+
+<div style="display:table;">
+    <h2>員工基本資料介面</h2>
+    <table style="display: inline-block;" border="1" cellspacing="1" cellpadding="4">
+        <tr>
+            <th> 員工身分證字號 </th>
+            <th> 員工姓名 </th>
+            <th> 職等 </th>
+            <th> 薪資 </th>
+            <th> 出生年月日 </th>
+            <th> 年齡 </th>            
+        </tr>
+        {% for e in elist %}
+            <tr>
+                <th style="text-align:center"> {{ e.id }} </th>
+                <td style="text-align:center"> {{ e.name }} </td>
+                <td style="text-align:center"> {{ e.rank }} </td>
+                <td style="text-align:center"> {{ e.salary }} </td>
+                <td style="text-align:center"> {{ e.birthdate }} </td>
+                <td style="text-align:center"> {{ e.age }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+    &nbsp; &nbsp;
+    <table style="display: inline-block;" border="3" cellspacing="1" cellpadding="4">
+        <tr>
+            <th style="text-align:center"> 全年薪資 </th>
+            <td style="text-align:right"> {{ yearSalary }} </td>
+        </tr>
+        <tr>
+            <th style="text-align:center"> 每月薪資 </th>
+            <td style="text-align:right"> {{ monthSalary }} </td>
+        </tr>
+        <tr>
+            <th style="text-align:center"> 每周薪資 </th>
+            <td style="text-align:right"> {{ weekSalary }} </td>
+        </tr>
+        <tr>
+            <th style="text-align:center"> 平均薪資 </th>
+            <td style="text-align:right"> {{ averageSalary }} </td>
+        </tr>
+        <tr>        
+            <th style="text-align:center"> 平均年齡 </th>
+            <td style="text-align:right"> {{ averageAge }} </td">
+        </tr>
+    </table class="left">
+</div>
+
+<div style="display:table; clear:both;">
+    <h2>國家紀錄介面</h2>
+    <table style="display: inline-block;" border="1" cellspacing="1" cellpadding="4">
+        <tr>
+            <th> 國家代碼 </th>
+            <th> 國家名稱 </th>
+            <th> 所屬洲名 </th>
+            <th> 人口 </th>
+            <th> 面積 </th>
+            <th> 是否邦交國 </th>            
+        </tr>
+        {% for c in clist %}
+            <tr>
+                <th style="text-align:center"> {{ c.code }} </th>
+                <td style="text-align:center"> {{ c.name }} </td>
+                <td style="text-align:center"> {{ c.continent }} </td>
+                <td style="text-align:center"> {{ c.population }} </td>
+                <td style="text-align:center"> {{ c.area }} </td>
+                <td style="text-align:center"> {{ c.diplomatic }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+    &nbsp; &nbsp;
+    <table style="display: inline-block;" border="3" cellspacing="1" cellpadding="4">
+        <tr>
+            <th style="text-align:center"> 邦交國 </th>
+            <td style="text-align:right"> {{ cntDiplomatic }} </td>
+        </tr>
+        <tr>
+            <th style="text-align:center"> 非邦交國 </th>
+            <td style="text-align:right"> {{ cntNonDiplomatic }} </td>
+        </tr>
+    </table>
+</div>
+
+
+<h2>員工派駐資料介面</h2>
+<div>
+    <table style="display: inline-block;" border="1" cellspacing="1" cellpadding="4">
+        <tr>
+            <th> 員工身分證字號 </th>
+            <th> 派駐國家代碼 </th>
+            <th> 員工姓名 </th>
+            <th> 到職日期 </th>
+            <th> 大使姓名 </th>
+            <th> 狀態 </th>
+        </tr>
+        {% for a in alist %}
+            <tr>
+                <th style="text-align:center"> {{ a.id }} </th>
+                <td style="text-align:center"> {{ a.code }} </td>
+                <td style="text-align:center"> {{ a.name }} </td>
+                <td style="text-align:center"> {{ a.date }} </td>
+                <td style="text-align:center"> {{ a.ambassador }} </td>
+                <td style="text-align:center"> {{ a.status }} </td>
+            </tr>
+        {% endfor %}
+    </table>    
+    &nbsp; &nbsp;
+    <table style="display: inline-block;" border="3" cellspacing="1" cellpadding="4">
+        <tr>
+            <th> 派駐國家代碼 </th>
+            <th> 派駐人數 </th>
+        </tr>
+        {% for ac in aclist %}
+            <tr>
+                <th style="text-align:center"> {{ ac.code }} </th>
+                <td style="text-align:center"> {{ ac.cnt }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+<h2>眷屬資料介面</h2>
+<div>
+    <table style="display: inline-block;" border="1" cellspacing="1" cellpadding="4">
+        <tr>
+            <th> 員工身分證字號 </th>
+            <th> 眷屬身分證字號 </th>
+            <th> 眷屬姓名 </th>
+            <th> 眷屬性別 </th>
+            <th> 關係 </th>
+            <th> 出生年月日 </th>
+            <th> 年齡 </th>
+            <th> 狀態 </th>
+        </tr>
+        {% for d in dlist %}
+            <tr>
+                <th style="text-align:center"> {{ d.emp_id }} </th>
+                <td style="text-align:center"> {{ d.dep_id }} </td>
+                <td style="text-align:center"> {{ d.dep_name }} </td>
+                <td style="text-align:center"> {{ d.dep_sex }} </td>
+                <td style="text-align:center"> {{ d.relation }} </td>
+                <td style="text-align:center"> {{ d.birthdate }} </td>
+                <td style="text-align:center"> {{ d.age }} </td>
+                <td style="text-align:center"> {{ d.status }} </td>
+             </tr>
+        {% endfor %}
+    </table>
+    &nbsp; &nbsp;
+    <table style="display: inline-block;" border="3" cellspacing="1" cellpadding="4">
+        <tr>
+            <th style="text-align:center"> 男眷屬人數 </th>
+            <td style="text-align:right"> {{ cntMale }} </td>
+        </tr>
+        <tr>
+            <th style="text-align:center"> 女眷屬人數 </th>
+            <td style="text-align:right"> {{ cntFemale }} </td>
+        </tr>
+        <tr>
+            <th style="text-align:center"> 男眷屬平均年齡 </th>
+            <td style="text-align:right"> {{ ageMale }} </td>
+        </tr>
+        <tr>
+            <th style="text-align:center"> 女眷屬平均年齡 </th>
+            <td style="text-align:right"> {{ ageFemale }} </td>
+        </tr>
+    </table>    
+</div>
+
+
+<h2>跨資料整合介面</h2>
+<div>
+    <table style="display: inline-block;" border="3" cellspacing="1" cellpadding="4">
+        <tr>
+            <th style="text-align:center"> NorthAmerica派駐人數 </th>
+            <td style="text-align:right"> {{ agentContinent }} </td>
+        </tr>
+    </table>    
+</div>
+{% endblock %}

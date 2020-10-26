@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}<title>employee資料表查詢列印</title>{% endblock %}
+{% block content %}
+
+<h2> 查詢國家資料表 country </h2>
+<h3> 功能1: 刪除/還原 存在狀態 </h3>
+<h3> 功能2: 列印 </h3>
+
+
+<form action="." method="POST" name="form1">
+    {% csrf_token %}
+    <table border="1" cellspacing="1" cellpadding="4">
+        <tr>
+            <th>國家代碼</th>
+            <td> {{unit.country_code}} </td>
+        </tr>
+
+        <tr>
+            <th>國家名稱</th>
+            <td> {{unit.country_name}} </td>
+        </tr>
+
+        <tr>
+            <th>所屬洲名</th>
+            <td> {{unit.continent_attr}} </td>
+        </tr>
+
+        <tr>
+            <th>元首姓名</th>
+            <td> {{unit.head_of_state}} </td>
+        </tr>
+
+        <tr>
+            <th>外交部長姓名</th>
+            <td> {{unit.foreign_minister}} </td>
+        </tr>
+
+        <tr>
+            <th>聯絡人</th>
+            <td> {{unit.liaison}} </td>
+        </tr>
+
+        <tr>
+            <th>人口</th>
+            <td> {{unit.country_population}} </td>
+        </tr>
+
+        <tr>
+            <th>面積</th>
+            <td> {{unit.country_area}} </td>
+        </tr>
+
+        <tr>
+            <th>電話</th>
+            <td> {{unit.contact_number}} </td>
+        </tr>
+
+        <tr>
+            <th>是否邦交國</th>
+            <td> {{unit.has_diplomatic_relatioin}} </td>
+        </tr>
+
+		<tr>
+			<th>大使姓名</th>
+			<td> {{unit.ambassador_name}} </td>
+        </tr>	
+        
+        <tr>
+            <th>存在狀態</th>
+            <td>
+                {% if unit.status == '正常' %}
+                    <input type="checkbox" name="normal" value="正常" checked
+                    onclick='window.location.assign("/status_country/{{unit.country_code}}/normal")'> 正常
+                    <input type="checkbox" name="deleted" value="亡國"
+                    onclick='window.location.assign("/status_country/{{unit.country_code}}/deleted")'> 亡國     
+                {% else %}
+                    <input type="checkbox" name="normal" value="正常"
+                    onclick='window.location.assign("/status_country/{{unit.country_code}}/normal")'> 正常                
+                    <input type="checkbox" name="deleted" value="亡國" checked
+                    onclick='window.location.assign("/status_country/{{unit.country_code}}/deleted")'> 亡國                
+                {% endif %}
+            </td>      
+        </tr>  
+    </table>
+</form>
+<br><br>
+
+<input type="button" value="列印" style="font-size: 18pt" onClick="window.print()">
+{% endblock %}

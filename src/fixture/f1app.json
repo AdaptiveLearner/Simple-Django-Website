@@ -1,0 +1,278 @@
+[
+    {
+        "model": "f1app.employee",
+        "fields": {
+            "emp_name": "Kawhi",
+            "emp_id": "A100000001",
+            "rank": "9",
+            "salary": "100000",
+            "phone_number": "0211112233",
+            "sex": "M",
+            "birthdate": "1996/06/21",
+            "recruit_date": "2016/11/21",
+            "address": "Toronto",
+            "photo": "kawhi",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.employee",
+        "fields": {
+            "emp_name": "Woody",
+            "emp_id": "C100012345",
+            "rank": "9",
+            "salary": "80000",
+            "phone_number": "01188623666666",
+            "sex": "M",
+            "birthdate": "1990/05/26",
+            "recruit_date": "2015/07/31",
+            "address": "Tokyo",
+            "photo": "woody",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.employee",
+        "fields": {
+            "emp_name": "Fiona",
+            "emp_id": "D221000112",
+            "rank": "8",
+            "salary": "70000",
+            "phone_number": "0621110000",
+            "sex": "F",
+            "birthdate": "1999/10/21",
+            "recruit_date": "2016/03/25",
+            "address": "Tokyo",
+            "photo": "fiona",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.employee",
+        "fields": {
+            "emp_name": "Bob",
+            "emp_id": "H120115121",
+            "rank": "11",
+            "salary": "150000",
+            "phone_number": "0212345678",
+            "sex": "M",
+            "birthdate": "1960/06/23",
+            "recruit_date": "1985/08/01",
+            "address": "Taipei",
+            "photo": "bob",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.employee",
+        "fields": {
+            "emp_name": "Mario",
+            "emp_id": "P100000000",
+            "rank": "10",
+            "salary": "90000",
+            "phone_number": "0422222222",
+            "sex": "M",
+            "birthdate": "1980/01/01",
+            "recruit_date": "2000/02/02",
+            "address": "Washington",
+            "photo": "mario",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.country",
+        "fields": {
+            "country_code": "000001",
+            "country_name": "USA",
+            "continent_attr": "NorthAmerica",
+            "head_of_state": "Trump",
+            "foreign_minister": "Sloan",
+            "liaison": "Smith",
+            "country_population": "300000000",
+            "country_area": "9000000",
+            "contact_number": "00218181111111",
+            "has_diplomatic_relatioin": "Yes",
+            "ambassador_name": "Mike",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.country",
+        "fields": {
+            "country_code": "000002",
+            "country_name": "Canada",
+            "continent_attr": "NorthAmerica",
+            "head_of_state": "Trudeau",
+            "foreign_minister": "Mills",
+            "liaison": "Lisa",
+            "country_population": "25000000",
+            "country_area": "9100000",
+            "contact_number": "00312121211",
+            "has_diplomatic_relatioin": "Yes",
+            "ambassador_name": "Kawhi",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.country",
+        "fields": {
+            "country_code": "000003",
+            "country_name": "Japan",
+            "continent_attr": "Asia",
+            "head_of_state": "Abe",
+            "foreign_minister": "Fukushan",
+            "liaison": "Fujitsu",
+            "country_population": "120000000",
+            "country_area": "220000",
+            "contact_number": "005511111111",
+            "has_diplomatic_relatioin": "Yes",
+            "ambassador_name": "Carl",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.dependent",
+        "fields": {
+            "dep_id": "Q222220103",
+            "dep_name": "Melisa",
+            "dep_sex": "F",
+            "birthdate": "1998/10/23"
+        }
+    },
+    {
+        "model": "f1app.dependent",
+        "fields": {
+            "dep_id": "D221200011",
+            "dep_name": "Fiona",
+            "dep_sex": "F",
+            "birthdate": "1999/10/21"
+        }
+    },
+    {
+        "model": "f1app.dependent",
+        "fields": {
+            "dep_id": "D100019945",
+            "dep_name": "Anthony",
+            "dep_sex": "M",
+            "birthdate": "1992/09/26"
+        }
+    },
+    {
+        "model": "f1app.dependent",
+        "fields": {
+            "dep_id": "Z220891122",
+            "dep_name": "Mary",
+            "dep_sex": "F",
+            "birthdate": "1997/07/03"
+        }
+    },
+    {
+        "model": "f1app.dependent",
+        "fields": {
+            "dep_id": "H221002689",
+            "dep_name": "Zeta",
+            "dep_sex": "F",
+            "birthdate": "1965/09/16"
+        }
+    },
+    {
+        "model": "f1app.agent",
+        "fields": {
+            "id": "1",
+            "emp_id": "P100000000",
+            "country_code": "000001",
+            "arrival_date": "2000/02/02",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.agent",
+        "fields": {
+            "id": "2",
+            "emp_id": "A100000001",
+            "country_code": "000001",
+            "arrival_date": "2015/01/01",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.agent",
+        "fields": {
+            "id": "3",
+            "emp_id": "A100000001",
+            "country_code": "000002",
+            "arrival_date": "2016/11/21",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.agent",
+        "fields": {
+            "id": "4",
+            "emp_id": "C100012345",
+            "country_code": "000003",
+            "arrival_date": "2015/07/31",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.agent",
+        "fields": {
+            "id": "5",
+            "emp_id": "D221000112",
+            "country_code": "000003",
+            "arrival_date": "2016/03/25",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.dependemp",
+        "fields": {
+            "id": "1",
+            "emp_id": "P100000000",
+            "dep_id": "Q222220103",
+            "relation": "wife",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.dependemp",
+        "fields": {
+            "id": "2",
+            "emp_id": "C100012345",
+            "dep_id": "D221200011",
+            "relation": "wife",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.dependemp",
+        "fields": {
+            "id": "3",
+            "emp_id": "D221000112",
+            "dep_id": "D100019945",
+            "relation": "husband",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.dependemp",
+        "fields": {
+            "id": "4",
+            "emp_id": "A100000001",
+            "dep_id": "Z220891122",
+            "relation": "wife",
+            "status": "正常"
+        }
+    },
+    {
+        "model": "f1app.dependemp",
+        "fields": {
+            "id": "5",
+            "emp_id": "H120115121",
+            "dep_id": "H221002689",
+            "relation": "wife",
+            "status": "正常"
+        }
+    }
+]

@@ -1,0 +1,6 @@
+emp_name,emp_id,rank,salary,phone_number,sex,birthdate,recruit_date,address,photo,status
+Kawhi,A100000001,9,100000,0211112233,M,1996/06/21,2016/11/21,Toronto,kawhi,正常
+Woody,C100012345,9,80000,01188623666666,M,1990/05/26,2015/07/31,Tokyo,woody,正常
+Fiona,D221000112,8,70000,0621110000,F,1999/10/21,2016/03/25,Tokyo,fiona,正常
+Bob,H120115121,11,150000,0212345678,M,1960/06/23,1985/08/01,Taipei,bob,正常
+Mario,P100000000,10,90000,0422222222,M,1980/01/01,2000/02/02,Washington,mario,正常

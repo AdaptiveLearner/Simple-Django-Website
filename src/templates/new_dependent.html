@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}<title>眷屬資料表新增</title>{% endblock %}
+{% block content %}
+
+<h2>dependent 眷屬資料表新增</h2>
+<form action="." method="POST" name="form1">
+	{% csrf_token %}
+	<table border="1" cellspacing="1" cellpadding="4">
+		<tr>
+			<th bgcolor="#00FF00">眷屬身分證字號</th>
+			<td>{{postform_dependent.dep_id}}</td>
+		</tr>
+		<tr>
+			<th>眷屬姓名</th>
+			<td>{{postform_dependent.dep_name}}</td>
+		</tr>
+		<tr>
+			<th>眷屬性別</th>
+			<td>
+				<input name="dep_sex" type="radio" id="Male" value="M" checked="checked" />
+				男
+				<input name="dep_sex" type="radio" id="Female" value="F" />
+				女
+			</td>
+		</tr>
+		<tr>
+			<th>出生年月日</th>
+			<td>{{postform_dependent.birthdate}}</td>
+		</tr>
+		<tr>
+			<th align="center">
+			<td>
+				<input type="submit" name="button" id="button" value="送出">
+			</td>
+			</th>
+		</tr>
+	</table>
+	<span style="color:red">{{message}}</span>
+</form>
+{% endblock %}

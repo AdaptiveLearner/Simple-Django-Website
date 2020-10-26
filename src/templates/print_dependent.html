@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}<title>眷屬資料表查詢列印</title>{% endblock %}
+{% block content %}
+
+<form action="." method="POST" name="form1">
+    {% csrf_token %}
+    <table border="1" cellspacing="1" cellpadding="4">
+        <tr>
+            <th>眷屬身分證字號</th>
+            <td> {{unit.dep_id}} </td>
+        </tr>
+
+        <tr>
+            <th>眷屬姓名</th>
+            <td> {{unit.dep_name}} </td>
+        </tr>
+
+        <tr>
+            <th>眷屬性別</th>
+            <td> {{unit.dep_sex}} </td>
+        </tr>
+
+        <tr>
+            <th>出生年月日</th>
+            <td> {{unit.birthdate}} </td>
+        </tr>
+    </table>
+</form>
+<input type="button" value="列印" onClick="window.print()">
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <script>
+        function addInput(divName) {
+            var choices = ["one", "two"];
+            var newDiv = document.createElement('div');
+            var selectHTML = "";
+            selectHTML = "<select>";
+            for (i = 0; i < choices.length; i = i + 1) {
+                selectHTML += "<option value='" + choices[i] + "'>" + choices[i] + "</option>";
+            }
+            selectHTML += "</select>";
+            newDiv.innerHTML = selectHTML;
+            document.getElementById(divName).appendChild(newDiv);
+        }
+    </script>
+
+
+    <form name="form1" method="post">
+        <table border="1" cellspacing="1" cellpadding="4">
+            <th>員工身分證字號</th>
+            <td>
+                <select id="emp_id" name="emp_id">
+                    <option value="A100000001">Kawhi</option>
+                    <option value="C100012345">Carl</option>
+                </select>
+            </td>
+        </table>
+
+        <div id="dynamicInput"></div>
+        <input type="button" value="Choose ID" onclick="addInput('dynamicInput');" />
+
+    </form>
+</body>
+
+</html>

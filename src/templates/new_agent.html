@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}<title>派駐資料表新增</title>{% endblock %}
+{% block content %}
+
+<script>
+	function selectEmployee() {
+		var choice = {{ elist | safe }};
+		var selectHTML = "<select  id='emp_id' name='emp_id'>";
+		for (var i = 0; i < choice.length; i++) {
+			selectHTML += "<option value='" + choice[i] + "'>" + choice[i] + "</option>";
+		}
+		selectHTML += "</select>";
+		document.write(selectHTML);
+	}
+
+	function selectCountry() {
+		var choice = {{ clist | safe }};
+		var selectHTML = "<select  id='country_code' name='country_code'>";
+		for (var i = 0; i < choice.length; i++) {
+			selectHTML += "<option value='" + choice[i] + "'>" + choice[i] + "</option>";
+		}
+		selectHTML += "</select>";
+		document.write(selectHTML);
+	}	
+</script>
+
+<h2>agent 派駐資料表新增</h2>
+<form action="." method="POST" name="form1">
+	{% csrf_token %}
+	<table border="1" cellspacing="1" cellpadding="4">
+		<tr>
+			<th bgcolor="#00FF00">員工身分證字號</th>
+			<td>
+				<select id='emp_id' name='emp_id'>
+					{% for e in elist %}
+						<option value={{e}}> {{e}} </option>
+					{% endfor %}
+				</select>	
+			</td>
+		/tr>
+		<tr>
+			<th bgcolor="#00FF00">派駐國家代碼</th>
+			<td>
+				<select id='country_code' name='country_code'>
+					{% for c in clist %}
+						<option value={{c}}> {{c}} </option>
+					{% endfor %}
+				</select>	
+			</td>
+		</tr>
+		<tr>
+		<tr>
+			<th>到職日期</th>
+			<td>{{postform_agent.arrival_date}}</td>
+		</tr>
+        <tr>
+			<th>狀態</th>
+			<td>
+				<input name="status" type="radio" id="正常" value="正常" checked="checked" />正常
+				<input name="status" type="radio" id="離職" value="離職" />離職
+			</td>			
+		</tr>
+		<tr>
+			<th align="center">
+				<input type="submit" name="button" id="button" value="送出">
+		</tr>
+	</table>
+	<span style="color:red">{{message}}</span>
+</form>
+{% endblock %}

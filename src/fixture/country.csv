@@ -1,0 +1,4 @@
+country_code,country_name,continent_attr,head_of_state,foreign_minister,liaison,country_population,country_area,contact_number,has_diplomatic_relatioin,ambassador_name,status
+000001,USA,NorthAmerica,Trump,Sloan,Smith,300000000,9000000,00218181111111,Yes,Mike,正常
+000002,Canada,NorthAmerica,Trudeau,Mills,Lisa,25000000,9100000,00312121211,Yes,Kawhi,正常
+000003,Japan,Asia,Abe,Fukushan,Fujitsu,120000000,220000,005511111111,Yes,Carl,正常

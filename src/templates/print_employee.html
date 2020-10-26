@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}<title>employee資料表查詢列印</title>{% endblock %}
+{% block content %}
+
+<h2> 查詢員工基本資料表 employee</h2>
+<h3> 功能1: 刪除/還原 狀態 </h3>
+<h3> 功能2: 列印 </h3>
+
+<form action="." method="POST" name="form1">
+    {% csrf_token %}
+    <table border="1" cellspacing="1" cellpadding="4">
+        <tr>
+            <th>員工姓名</th>
+            <td> {{unit.emp_name}} </td>
+        </tr>
+
+        <tr>
+            <th>身分證字號</th>
+            <td> {{unit.emp_id}} </td>
+        </tr>
+
+        <tr>
+            <th>職等</th>
+            <td> {{unit.rank}} </td>
+        </tr>
+
+        <tr>
+            <th>薪資</th>
+            <td> {{unit.salary}} </td>
+        </tr>
+
+        <tr>
+            <th>電話</th>
+            <td> {{unit.phone_number}} </td>
+        </tr>
+
+        <tr>
+            <th>性別</th>
+            <td> {{unit.sex}} </td>
+        </tr>
+
+        <tr>
+            <th>出生年月日</th>
+            <td> {{unit.birthdate}} </td>
+        </tr>
+
+        <tr>
+            <th>錄用日期</th>
+            <td> {{unit.recruit_date}} </td>
+        </tr>
+
+        <tr>
+            <th>住址</th>
+            <td> {{unit.address}} </td>
+        </tr>
+
+        <tr>
+            <th>照片</th>
+			<td>
+				<img src="/media/{{ unit.photo }}.png">
+			</td>            
+        </tr>
+
+        <tr>
+            <th>狀態</th>
+            <td>
+                {% if unit.status == '正常' %}
+                    <input type="checkbox" name="normal" value="正常" checked
+                    onclick='window.location.assign("/status_employee/{{unit.emp_id}}/normal")'> 正常
+                    <input type="checkbox" name="deleted" value="刪除"
+                    onclick='window.location.assign("/status_employee/{{unit.emp_id}}/deleted")'> 刪除     
+                {% else %}
+                    <input type="checkbox" name="normal" value="正常"
+                    onclick='window.location.assign("/status_employee/{{unit.emp_id}}/normal")'> 正常                
+                    <input type="checkbox" name="deleted" value="刪除" checked
+                    onclick='window.location.assign("/status_employee/{{unit.emp_id}}/deleted")'> 刪除                
+                {% endif %}
+            </td>
+
+        </tr>
+    </table>
+</form>
+<br><br>
+
+<input type="button" value="列印" style="font-size: 18pt" onClick="window.print()">
+{% endblock %}

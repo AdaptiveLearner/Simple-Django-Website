@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}<title>國家資料表修改</title>{% endblock %}
+{% block content %}
+<h2>country 國家資料表修改</h2>
+<form action="/edit_country/{{unit.country_code}}/save" method="POST" name="form1">
+	{% csrf_token %}
+	<table border="1" cellspacing="1" cellpadding="4">
+		<tr>
+			<th>國家代碼</th>
+			<td><input type="text" id="country_code" name="country_code" value={{unit.country_code}}></td>
+		</tr>
+
+		<tr>
+			<th>國家名稱</th>
+			<td><input type="text" id="country_name" name="country_name" value={{unit.country_name}}></td>
+		</tr>
+
+		<tr>
+			<th>所屬洲名</th>
+			<td>
+				<input name="continent_attr" type="radio" id="Asia" value="Asia" checked="checked"/>Asia
+				<input name="continent_attr" type="radio" id="NAmerica" value="NorthAmerica" />North America
+				<input name="continent_attr" type="radio" id="SAmerica" value="SouthAmerica" />South America
+				<input name="continent_attr" type="radio" id="Europe" value="Europe" />Europe
+				<input name="continent_attr" type="radio" id="Africa" value="Africa" />Africa
+			</td>				
+		</tr>
+
+		<tr>
+			<th>元首姓名</th>
+			<td><input type="text" id="head_of_state" name="head_of_state" value={{unit.head_of_state}}></td>
+		</tr>
+
+		<tr>
+			<th>外交部長姓名</th>
+			<td><input type="text" id="foreign_minister" name="foreign_minister" value={{unit.foreign_minister}}></td>
+		</tr>
+
+		<tr>
+			<th>聯絡人</th>
+			<td><input type="text" id="liaison" name="liaison" value={{unit.liaison}}></td>
+		</tr>
+
+		<tr>
+			<th>人口</th>
+			<td><input type="text" id="country_population" name="country_population" value={{unit.country_population}}>
+			</td>
+		</tr>
+
+		<tr>
+			<th>面積</th>
+			<td><input type="text" id="country_area" name="country_area" value={{unit.country_area}}></td>
+		</tr>
+
+		<tr>
+			<th>電話</th>
+			<td><input type="text" id="contact_number" name="contact_number" value={{unit.contact_number}}></td>
+		</tr>
+		<tr>
+			<th>是否邦交國</th>
+			<td><input type="text" id="has_diplomatic_relatioin" name="has_diplomatic_relatioin"
+					value={{unit.has_diplomatic_relatioin}}></td>
+		</tr>
+		<tr>
+			<th>大使姓名</th>
+			<td><input type="text" id="ambassador_name" name="ambassador_name" value={{unit.ambassador_name}}></td>
+		</tr>		
+		<tr>
+			<th>存在狀態</th>
+			<td>
+				{% if unit.status == "正常" %}
+					<input name="status" type="radio" id="正常" value="正常" checked="checked" />正常
+					<input name="status" type="radio" id="刪除" value="亡國" />亡國
+				{% else %}
+					<input name="status" type="radio" id="正常" value="正常" />正常
+					<input name="status" type="radio" id="刪除" value="亡國" checked="checked" />亡國
+				{% endif %}
+			</td>
+		</tr>
+
+		<tr>
+			<th colspan="2" align="center">
+				<input type="submit" name="button" id="button" value="送出">
+		</tr>
+	</table>
+	<span style="color:red">{{message}}</span>
+</form>
+{% endblock %}

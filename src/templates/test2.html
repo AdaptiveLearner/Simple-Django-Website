@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <script>
+        function addInput(choice) {
+            //var selectHTML = "";
+            var selectHTML = "<select>";
+            for (var i=0; i<choice.length; i++) {
+                selectHTML += "<option value='" + choice[i] + "'>" + choice[i] + "</option>";
+            }
+            selectHTML += "</select>";
+            document.write(selectHTML);
+        }
+    </script>
+
+    <form name="form1" method="post">
+        <table border="1" cellspacing="1" cellpadding="4">
+            <th>員工身分證字號</th>
+            <td>
+                <select id="emp_id" name="emp_id">
+                    <option value="A100000001">Kawhi</option>
+                    <option value="C100012345">Carl</option>
+                </select>
+            </td>
+        </table>
+
+        <script>
+            var choice = ["A100000001", "C100012345", "D221000112", "H120115121", "P100000000"];
+        </script>
+
+        <div id="dynamicInput"></div>
+        <input type="button" value="Choose ID" onclick="addInput(choice);" />
+
+    </form>
+</body>
+
+</html>

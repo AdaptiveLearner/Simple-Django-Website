@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}<title>employee 資料表新增</title>{% endblock %}
+{% block content %}
+<h2>employee 資料表新增</h2>
+<form action="." method="POST" name="form1">
+	{% csrf_token %}
+	<table border="1" cellspacing="1" cellpadding="4">
+		<tr>
+			<th bgcolor="#00FF00">員工姓名</th>
+			<td>{{postform.emp_name}}</td>
+		</tr>
+		<tr>
+			<th bgcolor="#00FF00">身分證字號</th>
+			<td>{{postform.emp_id}}</td>
+		</tr>
+		<tr>
+			<th bgcolor="#00FF00">職等</th>
+			<td>
+				<input type="number" name="rank" min="1" max="14" step="1" value="6">
+			</td>
+		</tr>
+		<tr>
+			<th bgcolor="#00FF00">薪資</th>
+			<td>
+				<input type="number" name="salary" min="22000" max="200000" step="1000" value="35000">
+			</td>
+		</tr>
+		<tr>
+			<th>電話</th>
+			<td>{{postform.phone_number}}</td>
+		</tr>
+
+		<tr>
+			<th>性別</th>
+			<td>
+				<input name="sex" type="radio" id="Male" value="M" checked="checked" />
+				男
+				<input name="sex" type="radio" id="Female" value="F" />
+				女
+			</td>
+		</tr>
+		<tr>
+			<th bgcolor="#00FF00">出生年月日</th>
+			<td>
+				<input type="text" name="birthdate" value="1900/01/01">
+			</td>
+		</tr>
+		<tr>
+			<th>錄用日期</th>
+			<td>{{postform.recruit_date}}</td>
+		</tr>
+		<tr>
+			<th>住址</th>
+			<td>{{postform.address}}</td>
+		</tr>
+		<tr>
+			<th>照片</th>
+			<td>
+			{% for img in imgs %}
+				{% if postform.photo == img %}
+				<input name="photo" type="radio" value={{img}} checked="checked" /> {{img}}
+				{% else %}
+				<input name="photo" type="radio" value={{img}} /> {{img}}
+				{% endif %}
+			{% endfor %}
+			</td>
+		</tr>
+		<tr>
+			<th>狀態</th>
+			<td>
+				<input name="status" type="radio" id="正常" value="正常" checked="checked" />正常
+				<input name="status" type="radio" id="刪除" value="刪除" />刪除
+			</td>
+		</tr>
+	</table>
+	<span style="color:red">{{message}}</span> <br><br>
+	<input type="submit" name="button" id="button" style="font-size: 18pt" value="送出">
+</form>
+{% endblock %}
